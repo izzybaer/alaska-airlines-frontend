@@ -1,76 +1,71 @@
-"use strict";
+'use strict';
 
-// vinicio - this line is NodeJS
+// izzy - production settings
+require('dotenv').config({ path: `${__dirname}/.env`});
 
-//---------------------------------------------------------------------
-// PRODUCTION SETTINGS
-//---------------------------------------------------------------------
-require("dotenv").config();
-// vinicio - this line is setting up webpack to interface with dotenv
-const { DefinePlugin, EnvironmentPlugin } = require("webpack");
-const CleanPlugin = require("clean-webpack-plugin");
-const UglifyPlugin = require("uglifyjs-webpack-plugin");
-//---------------------------------------------------------------------
+// izzy - this line is setting up webpack to interface with dotenv
+const { DefinePlugin, EnvironmentPlugin } = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
-const HTMLPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HTMLPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webPackConfig = (module.exports = {});
 
-const PRODUCTION = process.env.NODE_ENV === "production"; // vinicio - true or false
+const production = process.env.NODE_ENV === 'production'; // izzy - true or false
 
-//------------------------------------------------------------
 webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
-  filename: "bundle.[hash].js",
+  filename: 'bundle.[hash].js',
   path: `${__dirname}/build`,
-  publicPath: process.env.CDN_URL
+  publicPath: process.env.CDN_URL,
 };
-//------------------------------------------------------------
+
 webPackConfig.plugins = [
-  new HTMLPlugin({ title: "Full Stack Application! ^-^" }),
-  new EnvironmentPlugin(["NODE_ENV"]),
+  new HTMLPlugin({ title: 'Full Stack Flight Tracker! ^-^' }),
+  new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
-    __API_URL__: JSON.stringify(process.env.API_URL)
+    __API_URL__: JSON.stringify(process.env.API_URL),
   }),
-  new ExtractTextPlugin("bundle.[hash].css")
+  new ExtractTextPlugin('bundle.[hash].css'),
 ];
 
-if (PRODUCTION) {
+if (production) {
   webPackConfig.plugins = webPackConfig.plugins.concat([
     new UglifyPlugin(),
-    new CleanPlugin()
+    new CleanPlugin(),
   ]);
 }
-//------------------------------------------------------------
+
 webPackConfig.module = {
   rules: [
     {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: "babel-loader"
+      loader: 'babel-loader',
     },
     {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract({
         use: [
-          "css-loader",
-          "resolve-url-loader",
+          'css-loader',
+          'resolve-url-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true,
-              includePaths: [`${__dirname}/src/style`]
-            }
-          }
-        ]
-      })
-    }
-  ]
+              includePaths: [`${__dirname}/src/style`],
+            },
+          },
+        ],
+      }),
+    },
+  ],
 };
-//------------------------------------------------------------
-webPackConfig.devtool = PRODUCTION ? undefined : "eval-source-map";
+
+webPackConfig.devtool = production ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
-  historyApiFallback: true
+  historyApiFallback: true,
 };
