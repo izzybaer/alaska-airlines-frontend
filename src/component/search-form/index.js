@@ -1,5 +1,9 @@
 import React from 'react';
+import superagent from 'superagent';
+import SearchResults from '../search-results';
 import RaisedButton from 'material-ui/RaisedButton';
+
+const apiURL = `http://localhost:${process.env.PORT}/api/flights/search`;
 
 class SearchForm extends React.Component {
   constructor(props){
@@ -8,6 +12,7 @@ class SearchForm extends React.Component {
       to: '',
       from: '',
       flights: [],
+      hasError: false,
       hasSearched: false,
     };
 
@@ -18,8 +23,21 @@ class SearchForm extends React.Component {
 
   // onClick handleSubmit will fetch the data from the backend
   // and set hasSearched to true on the state
-  handleSubmit() {
-    this.setState({hasSearched: true});
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('inside of handleSubmit');
+    superagent.get(`${apiURL}`)
+      .then(res => {
+        this.setState({
+          flights: res.body.data,
+          hasSearched: true,
+        });
+        console.log('res.body.data', res.body.data);
+      }).catch(err => {
+        this.setState({
+          hasError: true,
+        });
+      });
   }
 
   // onChange handleDeparture will set the state
@@ -33,6 +51,8 @@ class SearchForm extends React.Component {
   }
 
   render() {
+    const style = { margin: 12 };
+
     console.log(this.state, '__STATE__');
 
     return(
@@ -52,10 +72,12 @@ class SearchForm extends React.Component {
             placeholder='San Francisco, CA(SFO-San Francisco Intl.)'
             onChange={this.handleDestination}
           />
-          <RaisedButton />
+          <RaisedButton label='FIND FLIGHTS' style={style}/>
         </form>
+        <SearchResults flights={this.state.flights}/>
       </div>
     );
   }
-
 }
+
+export default SearchForm;
