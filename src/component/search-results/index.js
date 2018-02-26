@@ -8,14 +8,13 @@ class SearchResults extends React.Component {
   }
 
   render() {
+    console.log('this.props', this.props);
     return (
       <ul>
         {this.props.flights.map((item, i) => {
-          return (
-            <li key={i}>
-              {item.data.to} - {item.data.from}
-            </li>
-          );
+          return <li key={i}>
+              {item.To} - {item.From} - {item.FlightNumber} - {item.Departs} - {item.Arrives} - {item.MainCabinPrice} - {item.FirstClassPrice}
+            </li>;
         })}
       </ul>
     );
