@@ -1,0 +1,7 @@
+# Created by Izzy Baer
+
+**/node_modules/*
+**/vendor/*
+**/*.min.js
+**/coverage/*
+**/build/*
