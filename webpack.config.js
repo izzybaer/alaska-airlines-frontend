@@ -19,7 +19,7 @@ webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
   filename: 'bundle.[hash].js',
   path: `${__dirname}/build`,
-  publicPath: process.env.CDN_URL,
+  publicPath: process.env.CDN_URL || '/',
 };
 
 webPackConfig.plugins = [
@@ -68,4 +68,7 @@ webPackConfig.devtool = production ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
   historyApiFallback: true,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  },
 };

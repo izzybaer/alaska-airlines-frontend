@@ -3,8 +3,6 @@ import superagent from 'superagent';
 import SearchResults from '../search-results';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const apiURL = `http://localhost:${process.env.PORT}/api/flights/search`;
-
 class SearchForm extends React.Component {
   constructor(props){
     super(props);
@@ -25,14 +23,13 @@ class SearchForm extends React.Component {
   // and set hasSearched to true on the state
   handleSubmit(e) {
     e.preventDefault();
-    console.log('inside of handleSubmit');
-    superagent.get(`${apiURL}`)
+    console.log(`${__API_URL__}`);
+    return superagent.get(`${__API_URL__}/api/flights/${this.state.from}/${this.state.to}`)
       .then(res => {
         this.setState({
-          flights: res.body.data,
+          flights: [...res.body],
           hasSearched: true,
         });
-        console.log('res.body.data', res.body.data);
       }).catch(err => {
         this.setState({
           hasError: true,
@@ -72,9 +69,9 @@ class SearchForm extends React.Component {
             placeholder='San Francisco, CA(SFO-San Francisco Intl.)'
             onChange={this.handleDestination}
           />
-          <RaisedButton label='FIND FLIGHTS' style={style}/>
+          <RaisedButton type='submit' label='FIND FLIGHTS' style={style}/>
         </form>
-        <SearchResults flights={this.state.flights}/>
+        {/* <SearchResults flights={this.state.flights}/> */}
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
+import superagent from 'superagent';
 import SearchForm from '../search-form';
-import SearchResultsList from '../search-results';
+import SearchResults from '../search-results';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -8,17 +9,28 @@ class Dashboard extends React.Component {
 
     this.state = {
       flights: [],
+      hasSearched: false,
     };
-
-    // handleSearch(flight) {
-
-    // }
+    
   }
+
+  componentWillMount() {
+    return superagent.get(`${__API_URL__}/api/flights/SEA/LAX`)
+      .then(res => {
+        localStorage.setItem('res.body', JSON.stringify(res));
+      }).catch(err => console.log(err));
+  }
+  
+
 
   render() {
     return(
       <div className='dashboard'>
-        <SearchForm />
+        {this.state.hasSearched ? (
+          <SearchResults flights={this.state.flights}/>
+        ) : (
+          <SearchForm />
+        )}
       </div>
     );
   }
