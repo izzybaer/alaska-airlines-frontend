@@ -10,6 +10,7 @@ class Dashboard extends React.Component {
     this.state = {
       flights: [],
       hasSearched: false,
+      locations: ['Seattle, WA', 'Las Vegas, NV', 'Los Angeles, CA', 'Pheonix, AZ'],
     };
     
   }
@@ -29,7 +30,7 @@ class Dashboard extends React.Component {
         {this.state.hasSearched ? (
           <SearchResults flights={this.state.flights}/>
         ) : (
-          <SearchForm />
+          <SearchForm locations={this.state.locations}/>
         )}
       </div>
     );
