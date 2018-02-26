@@ -1,6 +1,6 @@
 import React from 'react';
-import {BrowserRouter, Router, Link} from 'react-router-dom';
-// import Dashboard from '../dashboard';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import Dashboard from '../dashboard';
 
 export default class App extends React.Component{
   render() {
@@ -11,7 +11,7 @@ export default class App extends React.Component{
             <header>
               <h1> Flight Tracker </h1>
             </header>
-            {/* <Route exact path='/' component={Dashboard} /> */}
+            <Route exact path='/' component={Dashboard} />
           </div>
         </BrowserRouter>
       </div>
