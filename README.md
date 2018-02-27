@@ -61,7 +61,7 @@ This is a full stack javascript flight tracker. The frontend was built with Reac
         - run `yarn start` in another tab - wait a couple seconds for the server to start
     - in the frontend terminal tab 
         - run `yarn watch` and wait for webpack to compile successfully
-    - in **Chrome** (because its the best)
+    - in **Chrome** (ruler of all browsers)
         - navigate to `http://localhost:8080`
 
 ## contributions
