@@ -16,7 +16,6 @@ class SearchForm extends React.Component {
       hasError: false,
       hasSearched: false,
       locations: ['Seattle, WA', 'Las Vegas, NV', 'Los Angeles, CA', 'Pheonix, AZ'],
-      
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -105,34 +104,34 @@ class SearchForm extends React.Component {
             onSubmit={this.handleSubmit}>
             <Col sm={4}>
               <TextField
+                style={style.textField}
+                value={this.state.from}
+                floatingLabelText='From'
+                floatingLabelFixed={true}
+                hintText='departing from..'
+                onChange={this.handleDeparture}
                 inputStyle={{display: 'inline-block'}}
                 underlineStyle={style.textField.underlineStyle}
-                underlineFocusStyle={style.textField.underlineFocusStyle}
                 floatingLabelStyle={style.textField.floatingLabelStyle}
+                underlineFocusStyle={style.textField.underlineFocusStyle}
                 floatingLabelFocusStyle={style.textField.floatingLabelFocusStyle}
-                style={style.textField}
-                floatingLabelFixed={true}
-                floatingLabelText='From'
-                hintText='departing from..'
-                value={this.state.from}
-                onChange={this.handleDeparture}
 
               />
             </Col>
 
             <Col sm={4}>
               <TextField
+                value={this.state.to}
+                floatingLabelText='To'
+                hintText='arriving in..'
+                style={style.textField}
+                floatingLabelFixed={true}
+                onChange={this.handleDestination}
                 inputStyle={{display: 'inline-block'}}
                 underlineStyle={style.textField.underlineStyle}
                 underlineFocusStyle={style.textField.underlineFocusStyle}
                 floatingLabelStyle={style.textField.floatingLabelStyle}
                 floatingLabelFocusStyle={style.textField.floatingLabelFocusStyle}
-                style={style.textField}
-                floatingLabelText='To'
-                floatingLabelFixed={true}
-                hintText='arriving in..'
-                value={this.state.to}
-                onChange={this.handleDestination}
               />
             </Col>
             <FormGroup>
@@ -142,12 +141,10 @@ class SearchForm extends React.Component {
                 label='FIND FLIGHTS' 
                 style={{textAlign: 'center', marginLeft: '35%', marginTop:'20px', height: '60px', width: '200px', fontSize: '35px'}} 
               /> 
-             
             </FormGroup>
           </Form>
         </Card>
-        
-        <SearchResults flights={this.state.flights}/>
+        <SearchResults flights={this.state.flights} />
       </div>
     );
   }

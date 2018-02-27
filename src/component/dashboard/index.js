@@ -13,14 +13,10 @@ class Dashboard extends React.Component {
       locations: ['Seattle, WA', 'Las Vegas, NV', 'Los Angeles, CA', 'Pheonix, AZ'],
     };
   }
-
-
   render() {
-    return(
-      <div className='dashboard'>
-        <SearchForm locations={this.state.locations}/>
-      </div>
-    );
+    return <div className="dashboard">
+      <SearchForm locations={this.state.locations} />
+    </div>;
   }
 }
 

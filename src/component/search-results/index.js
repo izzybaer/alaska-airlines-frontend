@@ -48,7 +48,7 @@ class SearchResults extends React.Component {
       gridTile: {
         border: '#174266',
         fontFamily: 'Roboto, sans-serif',
-      }
+      },
     };
     return (
       <div className='search-results'>
