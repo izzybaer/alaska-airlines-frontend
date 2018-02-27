@@ -1,4 +1,4 @@
-# alaska-airlines-frontend
+# Flight Tracker
 
 This is a full stack javascript flight tracker. The frontend was built with React, Bootstrap and Material-UI, and the backend was built with MongoDB, Node, and Express.
 
@@ -87,6 +87,7 @@ API_URL=http://localhost:3000
     - run `yarn watch` and wait for webpack to compile successfully
 - in **Chrome** (ruler of all browsers)
     - navigate to `http://localhost:8080`
+
 
 ## contributions
     
