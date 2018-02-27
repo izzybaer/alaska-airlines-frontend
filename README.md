@@ -1,6 +1,6 @@
 # alaska-airlines-frontend
 
-This is a full stack javascript flight tracker. The frontend built with React, JS, Bootstrap and Material-UI, the backend built with MongoDB, Node, and Express.
+This is a full stack javascript flight tracker. The frontend was built with React, Bootstrap and Material-UI, and the backend was built with MongoDB, Node, and Express.
 
 ## tech / frameworks
 
