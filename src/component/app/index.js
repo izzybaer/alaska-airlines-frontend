@@ -2,9 +2,11 @@ import './app.scss';
 import React from 'react';
 import Dashboard from '../dashboard';
 import AppBar from 'material-ui/AppBar';
+import SearchForm from '../search-form';
+import SearchResults from '../search-results';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class App extends React.Component{
   render() {
@@ -32,14 +34,14 @@ export default class App extends React.Component{
     const muiTheme = getMuiTheme({
       inputs: {
         padding: '1px',
+        color: '#DDDDDD',
         margin: '0 auto',
         marginTop: '10px',
         marginRight: '30px',
-        color: '#DDDDDD',
         borderRadius: '8px',
+        fontColor: '#E7E7E7',
         backgroundColor: 'white',
         fontFamily: 'Roboto, sans-serif',
-        fontColor: '#E7E7E7',
       },
     });
     return (
@@ -52,6 +54,8 @@ export default class App extends React.Component{
           <BrowserRouter>
             <div>
               <Route exact path='/' component={Dashboard} />
+              <Route exact path='/search' component={SearchForm} />
+              <Route exact path='/search/results' component={SearchResults} />
             </div>
           </BrowserRouter>
           <footer>
