@@ -39,14 +39,14 @@ This is a full stack javascript flight tracker. The frontend was built with Reac
 
 ## app features
 
-    - user is able to search for flights between two locations (airport codes)
-    - user is able to see a list of flights matching the search params
-    - user is able to sort flights by departure or price(first class and main cabin)
+- user is able to search for flights between two locations (airport codes)
+- user is able to see a list of flights matching the search params
+- user is able to sort flights by departure or price(first class and main cabin)
 
 ## tests
 
-    - all tests are run through jests testing suite on the backend
-    - jest was used to test POST and GET routes
+- all tests are run through jests testing suite on the backend
+- jest was used to test POST and GET routes
 
 ## how to use
 
