@@ -5,12 +5,13 @@ This is a full stack javascript flight tracker. The frontend was built with Reac
 ## tech / frameworks
 
 ### frontend:
-- node.js
+- react.js
     - babel-core
     - babel-jest
     - babel-loader
     - babel-preset-env
     - babel-preset-react
+    - babel-plugin-transform-object-rest-spread
     - clean-webpack-plugin
     - css-loader
     - dotenv
@@ -57,9 +58,10 @@ This is a full stack javascript flight tracker. The frontend was built with Reac
 - open a terminal tab for the frontend, and one for the backend
 - run `yarn install` in both the backend tab and the frontend tab
 - once yarn has finished installing..
-    - run the command `touch .env` in both terminal tabs in the root of the each repo
+    - run the command `touch .env` in both terminal tabs in the root of each repo
 - open two editors, one for each repo, and in each editor window navigate to the .env file
-- paste these environment variables inside the backend .env and save the file
+- paste these environment variables inside the backend .env and save the file: 
+
 ``` 
 PORT=3000
 DEBUG=true
@@ -68,12 +70,15 @@ CORS_ORIGINS=http://localhost:8080
 APP_SECRET='change_this'
 MONGODB_URI=mongodb://localhost/aa-dev
 ```
-- paste these environment variables inside the frontend .env and save the file
+
+- paste these environment variables inside the frontend .env and save the file:
+
 ```
 CDN_URL=/
 NODE_ENV=dev
 API_URL=http://localhost:3000
 ```
+
 - navigate back to your terminal
 - open two more terminal tabs inside the backend repo
     - run `yarn dbon` in one tab - wait a couple seconds for mongodb to connect
@@ -86,10 +91,12 @@ API_URL=http://localhost:3000
 
 ## contributions
     
-    ### want to contribute? 
-        - maybe you have a great idea for refactoring
-        - maybe you have more optimal solutions for fetching data and virtual DOM rendering
-        - make a PR! 
+- wanna contribute?
+
+    - maybe you have a great idea for refactoring..
+    - maybe you have some unique, efficient solutions..
+    - make a PR! 
+        
         
         
 ## now you can get started searching for flights!
