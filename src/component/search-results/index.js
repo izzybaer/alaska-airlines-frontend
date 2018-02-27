@@ -9,25 +9,28 @@ class SearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortedByPrice: false,
-      sortedByDeparture: false,
+      dataSet: null,
     };
     this.handlePriceSort = this.handlePriceSort.bind(this);
     this.handleDepartureSort = this.handleDepartureSort.bind(this);
   }
   
- 
-  handlePriceSort(flights) {
-    const priceSortedFlights = this.props.flights.sort((a, b) => a.Price - b.Price);
-    this.setState({ sortedByPrice: true });
+  handlePriceSort(flights){
+    const priceSort = this.props.flights.sort((a, b) => a.MainCabinPrice - b.MainCabinPrice).sort((c, d) => c.FirstClassPrice - d.FirstClassPrice);
+    this.setState({ dataSet: priceSort });
   }
 
+
   handleDepartureSort(flights) {
-    const departureSortedFlights = this.props.flights.sort((a, b) => a.Arrives - b.Departs);
-    this.setState({ sortedByDeparture: true });
+    const departSort = this.props.flights.sort((a, b) => a.DepartsMilitary - b.DepartsMilitary);
+    this.setState({ dataSet: departSort });
   }
 
   render() {
+    // let sortedMain = this.handleMainCabinPriceSort(this.props.flights);
+    // let sortedDepart = this.handleDepartureSort(this.props.flights);
+    // let sortedFirst = this.handleFirstClassPriceSort(this.props.flights);
+
     const style = {
       root: {
         display: 'flex',
@@ -53,13 +56,13 @@ class SearchResults extends React.Component {
             <RaisedButton
               label='Price'
               style={{display: 'inline-block', marginRight: '20px'}}
-              onClick={() => this.handlePriceSort(this.state.sortedByPrice)}
+              onClick={() => this.handlePriceSort(this.state.dataSet)}
             />
           
             <RaisedButton
               label='Departure'
               style={{display: 'inline-block', marginLeft: '20px'}}
-              onClick={() => this.handleDepartureSort(this.state.sortedByDeparture)}
+              onClick={() => this.handleDepartureSort(this.state.dataSet)}
             />
           </h2>
         </div>
@@ -69,7 +72,7 @@ class SearchResults extends React.Component {
           cols={1}
           style={style.gridList}>
           {this.props.flights.map(flight => {
-            return <GridTile style={{ fontFamily: 'Roboto, sans-serif' }} key={flight} title={this.props.flights.From} cols={1} rows={2}>
+            return <GridTile style={{ fontFamily: 'Roboto, sans-serif' }} key={flight.id} title={this.props.flights.From} cols={1} rows={2}>
               <div className='flight-content'>
                 <ul style={{ listStyle: 'none', display: 'inline-block' }}>
                   <li>{flight.FlightNumber}</li>
