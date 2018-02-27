@@ -11,9 +11,9 @@ class SearchResults extends React.Component {
     this.state = {
       dataSet: null,
     };
-    this.handleFirstClassPrice = this.handleFirstClassPrice.bind(this);
-    this.handleMainCabinPrice = this.handleMainCabinPrice.bind(this);
     this.handleDepartureSort = this.handleDepartureSort.bind(this);
+    this.handleMainCabinPrice = this.handleMainCabinPrice.bind(this);
+    this.handleFirstClassPrice = this.handleFirstClassPrice.bind(this);
   }
 
   handleMainCabinPrice(flights) {

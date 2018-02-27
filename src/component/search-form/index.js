@@ -15,7 +15,6 @@ class SearchForm extends React.Component {
       flights: [],
       hasError: false,
       hasSearched: false,
-      locations: ['Seattle, WA', 'Las Vegas, NV', 'Los Angeles, CA', 'Pheonix, AZ'],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +32,6 @@ class SearchForm extends React.Component {
           flights: [...res.body],
           hasSearched: true,
         });
-        console.log(this.state.flights);
       }).catch(err => {
         this.setState({
           hasError: true,
