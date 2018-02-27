@@ -11,23 +11,28 @@ class SearchResults extends React.Component {
     this.state = {
       dataSet: null,
     };
-    this.handlePriceSort = this.handlePriceSort.bind(this);
+    this.handleFirstClassPrice = this.handleFirstClassPrice.bind(this);
+    this.handleMainCabinPrice = this.handleMainCabinPrice.bind(this);
     this.handleDepartureSort = this.handleDepartureSort.bind(this);
   }
-  
-  handlePriceSort(flights){
-    const priceSort = this.props.flights.sort((a, b) => a.MainCabinPrice - b.MainCabinPrice);
-    this.setState({ dataSet: priceSort });
+
+  handleMainCabinPrice(flights) {
+    const mainSort = this.props.flights.sort((a, b) => a.MainCabinPrice - b.MainCabinPrice);
+    this.setState({ dataSet: mainSort });
   }
 
+  handleFirstClassPrice(flights) {
+    const firstSort = this.props.flights.sort((a, b) => a.FirstClassPrice - b.FirstClassPrice);
+    this.setState({ dataSet: firstSort });
+  }
 
   handleDepartureSort(flights) {
-    const departSort = this.props.flights.sort((a, b) => a.DepartsMilitary - b.DepartsMilitary);
+    const departSort = this.props.flights.sort((a, b) => a.DepartsMilitary - b.DepartsMilitary
+    );
     this.setState({ dataSet: departSort });
   }
 
   render() {
-
     const style = {
       root: {
         display: 'flex',
@@ -43,45 +48,55 @@ class SearchResults extends React.Component {
       gridTile: {
         border: '#174266',
         fontFamily: 'Roboto, sans-serif',
-      },
+      }
     };
     return (
       <div className='search-results'>
         <div className='sorting-buttons'>
           <h2>
-            <p> Sort By: </p> 
+            <p> Sort By: </p>
             <RaisedButton
-              label='Price'
-              style={{display: 'inline-block', marginRight: '20px'}}
-              onClick={() => this.handlePriceSort(this.state.dataSet)}
+              label='First Class Price'
+              style={{ display: 'inline-block', marginRight: '20px' }}
+              onClick={() => this.handleFirstClassPrice(this.state.dataSet)}
             />
-          
+
+            <RaisedButton
+              label='Main Cabin Price'
+              style={{ display: 'inline-block', marginLeft: '20px' }}
+              onClick={() => this.handleMainCabinPrice(this.state.dataSet)}
+            />
+
             <RaisedButton
               label='Departure'
-              style={{display: 'inline-block', marginLeft: '20px'}}
+              style={{ display: 'inline-block', marginLeft: '20px' }}
               onClick={() => this.handleDepartureSort(this.state.dataSet)}
             />
           </h2>
         </div>
-        <GridList
-          cellHeight={50}
-          padding={1}
-          cols={1}
-          style={style.gridList}>
+        <GridList cellHeight={50} padding={1} cols={1} style={style.gridList}>
           {this.props.flights.map(flight => {
-            return <GridTile style={{ fontFamily: 'Roboto, sans-serif' }} key={flight.id} title={this.props.flights.From} cols={1} rows={2}>
-              <div className='flight-content'>
-                <ul style={{ listStyle: 'none', display: 'inline-block' }}>
-                  <li>{flight.FlightNumber}</li>
-                  <li>{flight.From}</li>
-                  <li>{flight.Departs}</li>
-                  <li>{flight.To}</li>
-                  <li>{flight.Arrives}</li>
-                  <li>{flight.MainCabinPrice}</li>
-                  <li>{flight.FirstClassPrice}</li>
-                </ul>
-              </div>
-            </GridTile>;
+            return (
+              <GridTile
+                style={{ fontFamily: 'Roboto, sans-serif' }}
+                key={flight.id}
+                title={this.props.flights.From}
+                cols={1}
+                rows={2}
+              >
+                <div className='flight-content'>
+                  <ul style={{ listStyle: 'none', display: 'inline-block' }}>
+                    <li>{flight.FlightNumber}</li>
+                    <li>{flight.From}</li>
+                    <li>{flight.Departs}</li>
+                    <li>{flight.To}</li>
+                    <li>{flight.Arrives}</li>
+                    <li>{flight.MainCabinPrice}</li>
+                    <li>{flight.FirstClassPrice}</li>
+                  </ul>
+                </div>
+              </GridTile>
+            );
           })}
         </GridList>
       </div>
