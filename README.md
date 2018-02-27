@@ -57,7 +57,7 @@ This is a full stack javascript flight tracker. The frontend was built with Reac
 - open a terminal tab for the frontend, and one for the backend
 - run `yarn install` in both the backend tab and the frontend tab
 - once yarn has finished installing..
-    - run the command `touch .env` in both terminal tabs from the root of the each repo
+    - run the command `touch .env` in both terminal tabs in the root of the each repo
 - open two editors, one for each repo, and in each editor window navigate to the .env file
 - paste these environment variables inside the backend .env and save the file
 ``` 
