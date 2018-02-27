@@ -66,13 +66,17 @@ This is a full stack javascript flight tracker. The frontend was built with Reac
 
 ## contributions
     
-    ### if you want to contribute
+    ### want to contribute? 
         - maybe you have a great idea for refactoring
         - maybe you have more optimal solutions for fetching data and virtual DOM rendering
         - make a PR! 
         
+        
 ## now you can get started searching for flights!
 
+
+
 ## credits
+
 
 [Izzy Baer](https://github.com/izzybaer)
