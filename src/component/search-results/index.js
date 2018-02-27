@@ -16,7 +16,7 @@ class SearchResults extends React.Component {
   }
   
   handlePriceSort(flights){
-    const priceSort = this.props.flights.sort((a, b) => a.MainCabinPrice - b.MainCabinPrice).sort((c, d) => c.FirstClassPrice - d.FirstClassPrice);
+    const priceSort = this.props.flights.sort((a, b) => a.MainCabinPrice - b.MainCabinPrice);
     this.setState({ dataSet: priceSort });
   }
 
@@ -27,9 +27,6 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    // let sortedMain = this.handleMainCabinPriceSort(this.props.flights);
-    // let sortedDepart = this.handleDepartureSort(this.props.flights);
-    // let sortedFirst = this.handleFirstClassPriceSort(this.props.flights);
 
     const style = {
       root: {
