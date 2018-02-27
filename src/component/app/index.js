@@ -1,3 +1,4 @@
+import './app.scss';
 import React from 'react';
 import Dashboard from '../dashboard';
 import AppBar from 'material-ui/AppBar';
@@ -12,6 +13,7 @@ export default class App extends React.Component{
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
+        fontFamily: 'Roboto, sans-serif',
       },
       title: {
         cursor: 'pointer',
@@ -23,38 +25,8 @@ export default class App extends React.Component{
         marginLeft: '15px',
       },
       appBar: {
-        height: '85px',
-        backgroundColor: '#373C3C',
-      },
-      sidebar: {
-        float: 'left',
-        height: '1100px',
-        width: '275px',
-        backgroundColor: '#D6D8D8',
-        textAlign: 'center',
-        display: 'inline-block',
-      },
-      menu: {
-        fontSize: 20,
-        display: 'inline-block',
-        margin: '16px 32px 16px 0',
-        fontFamily: 'Source Serif Pro',
-        fontWeight: 'bolder',
-        color: '#373C3C',
-      },
-      button: {
-        margin: 15,
-        marginTop: '75px',
-        borderRadius: 10,
-        fontFamily: 'Source Serif Pro',
-        fontSize: 20,
-        labelStyle: {
-          fontFamily: 'Source Serif Pro',
-          fontSize: '22px',
-          textTransform: 'none',
-          fontWeight: 'bolder',
-          color: '#373C3C',
-        },
+        height: '50px',
+        backgroundColor: '#174266',
       },
     };
     const muiTheme = getMuiTheme({
@@ -66,21 +38,25 @@ export default class App extends React.Component{
         color: '#DDDDDD',
         borderRadius: '8px',
         backgroundColor: 'white',
-        fontFamily: 'Source Serif Pro',
+        fontFamily: 'Roboto, sans-serif',
         fontColor: '#E7E7E7',
       },
     });
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className='app'>
+          <AppBar 
+            style={{height: '130px', marginBottom: '3%', backgroundColor: '#174266'}} 
+            showMenuIconButton={false}
+          />
           <BrowserRouter>
             <div>
-              <header>
-                <h1> Flight Tracker </h1>
-              </header>
               <Route exact path='/' component={Dashboard} />
             </div>
           </BrowserRouter>
+          <footer>
+          Created By Izzy Baer
+          </footer>
         </div>
       </MuiThemeProvider>
     );

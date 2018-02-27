@@ -12,26 +12,13 @@ class Dashboard extends React.Component {
       hasSearched: false,
       locations: ['Seattle, WA', 'Las Vegas, NV', 'Los Angeles, CA', 'Pheonix, AZ'],
     };
-    
   }
-
-  componentWillMount() {
-    return superagent.get(`${__API_URL__}/api/flights/SEA/LAX`)
-      .then(res => {
-        localStorage.setItem('res.body', JSON.stringify(res));
-      }).catch(err => console.log(err));
-  }
-  
 
 
   render() {
     return(
       <div className='dashboard'>
-        {this.state.hasSearched ? (
-          <SearchResults flights={this.state.flights}/>
-        ) : (
-          <SearchForm locations={this.state.locations}/>
-        )}
+        <SearchForm locations={this.state.locations}/>
       </div>
     );
   }
