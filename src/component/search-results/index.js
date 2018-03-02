@@ -27,8 +27,7 @@ class SearchResults extends React.Component {
   }
 
   handleDepartureSort(flights) {
-    const departSort = this.props.flights.sort((a, b) => a.DepartsMilitary - b.DepartsMilitary
-    );
+    const departSort = this.props.flights.sort((a, b) => a.DepartsMilitary - b.DepartsMilitary);
     this.setState({ dataSet: departSort });
   }
 
@@ -54,35 +53,38 @@ class SearchResults extends React.Component {
       <div className='search-results'>
         <div className='sorting-buttons'>
           <h2>
-            <p> Sort By: </p>
-            <RaisedButton
-              label='First Class Price'
-              style={{ display: 'inline-block', marginRight: '20px' }}
-              onClick={() => this.handleFirstClassPrice(this.state.dataSet)}
-            />
-
-            <RaisedButton
-              label='Main Cabin Price'
-              style={{ display: 'inline-block', marginLeft: '20px' }}
-              onClick={() => this.handleMainCabinPrice(this.state.dataSet)}
-            />
-
+            <span> Sort By </span>
             <RaisedButton
               label='Departure'
               style={{ display: 'inline-block', marginLeft: '20px' }}
               onClick={() => this.handleDepartureSort(this.state.dataSet)}
             />
+            <RaisedButton
+              label='Main Cabin Price'
+              style={{ display: 'inline-block', marginLeft: '20px', marginRight: '10px' }}
+              onClick={() => this.handleMainCabinPrice(this.state.dataSet)}
+            />
+            <RaisedButton
+              label='First Class Price'
+              style={{ display: 'inline-block', marginLeft: '10px' }}
+              onClick={() => this.handleFirstClassPrice(this.state.dataSet)}
+            />
+
           </h2>
         </div>
-        <GridList cellHeight={50} padding={1} cols={1} style={style.gridList}>
+        <GridList 
+          cols={1} 
+          padding={1} 
+          cellHeight={50} 
+          style={style.gridList}>
           {this.props.flights.map(flight => {
             return (
               <GridTile
-                style={{ fontFamily: 'Roboto, sans-serif' }}
+                rows={2}
+                cols={1}
                 key={flight.id}
                 title={this.props.flights.From}
-                cols={1}
-                rows={2}
+                style={{ fontFamily: 'Roboto, sans-serif' }}
               >
                 <div className='flight-content'>
                   <ul style={{ listStyle: 'none', display: 'inline-block' }}>

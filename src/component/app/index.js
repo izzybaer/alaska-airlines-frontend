@@ -1,6 +1,8 @@
 import './app.scss';
 import React from 'react';
 import Dashboard from '../dashboard';
+import Logo from '../../assets/akair.svg';
+import SvgIcon from 'material-ui/SvgIcon';
 import AppBar from 'material-ui/AppBar';
 import SearchForm from '../search-form';
 import SearchResults from '../search-results';
@@ -50,6 +52,7 @@ export default class App extends React.Component{
           <AppBar 
             style={{height: '130px', marginBottom: '3%', backgroundColor: '#174266'}} 
             showMenuIconButton={false}
+            iconElementLeft={<SvgIcon path='../../assets/akair.svg'/>}
           />
           <BrowserRouter>
             <div>
