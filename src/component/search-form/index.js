@@ -51,7 +51,11 @@ class SearchForm extends React.Component {
 
   render() {
     const style = { 
-      margin: 12,
+      button: {
+        marginLeft: '40%',
+        marginTop: '20px',
+        // height: '60px',
+      },
       textField: {
         marginTop: '10px',
         marginLeft: '30%',
@@ -77,15 +81,16 @@ class SearchForm extends React.Component {
         height: '260px',
         width: '50%',
       },
-      button: {
-        margin: '0 auto',
-        height: '60px',
-        width: '200px',
-      },
-      buttonText: {
-        fontSize: '50px',
-        textAlign: 'center',
-      },
+      // button: {
+      //   height: '60px',
+      //   width: '200px',
+      //   marginLeft: '35%',
+      //   marginTop: '15px',
+      //   buttonText: {
+      //     fontSize: '20px',
+      //     textAlign: 'center',
+      //   },
+      // },
     };
 
     return(
@@ -133,11 +138,12 @@ class SearchForm extends React.Component {
               />
             </Col>
             <FormGroup>
-             
               <RaisedButton 
                 type='submit' 
                 label='FIND FLIGHTS' 
-                style={{textAlign: 'center', marginLeft: '35%', marginTop:'20px', height: '60px', width: '200px', fontSize: '35px'}} 
+                labelColor='#f2f2f2'
+                backgroundColor='#476c21'
+                style={style.button}
               /> 
             </FormGroup>
           </Form>

@@ -51,20 +51,31 @@ webPackConfig.module = {
         use: [
           'css-loader',
           'resolve-url-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              includePaths: [`${__dirname}/src/style`],
-            },
-          },
+          'sass-loader?sourceMap',
         ],
       }),
+    },
+    {
+      test: /\.(woff|woff2|ttf|eot|svg).*/,
+      exclude: /\.icon.svg/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 1000,
+            name: 'font/[name].[hash].[ext]',
+          },
+        },
+      ],
+    },
+    {
+      test: /\.icon.svg/,
+      loader: 'raw-loader',
     },
   ],
 };
 
-webPackConfig.devtool = production ? undefined : 'eval-source-map';
+webPackConfig.devtool = production ? undefined : 'cheap-module-eval-source-map';
 
 webPackConfig.devServer = {
   historyApiFallback: true,
